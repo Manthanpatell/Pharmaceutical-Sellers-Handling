@@ -1,0 +1,57 @@
+{% extends 'store/base.html' %}
+{% block content_data %}
+
+
+<h2 align="center">Bill No : {{ billNo }}</h2>
+<br> <br>
+<h2 align="center"> Date : {{ ddate }}</h2>
+
+<br><br>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Bill Details</h4>
+   
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th style="text-align: center;font-weight: bold;"> No. </th>
+                <th style="text-align: center;font-weight: bold;"> Product Name </th>
+                <th style="text-align: center;font-weight: bold;"> Product Price </th>
+                <th style="text-align: center;font-weight: bold;"> Product QTY </th>
+                <th style="text-align: center;font-weight: bold;">Product Total</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                {% for i in BillDes %}
+                <tr>
+                    <td style="text-align: center;" >{{ forloop.counter }}</td>
+                    <td style="text-align: center;">{{ i.pd_nm }}</td>
+                    <td style="text-align: center;">{{ i.pd_price }}</td>
+                    <td style="text-align: center;">{{ i.pd_qty }}</td>
+                    <td style="text-align: center;">{{ i.pd_tot }}</td>
+                </tr>
+     
+            {% endfor %}
+            <tr>
+                <td style="font-weight: bold;" >Payable Amount </td>
+                <h4><td>{{ tot }}</td></h4>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<td> <div style="margin-left:15%;">
+    <a style="margin-left:45%;" class="btn btn-info" href="{% url 'sk_create_pdf' billNo %}"> View Bill </a>
+   </div>
+</td>
+</table>
+</h3>
+
+{% endblock content_data %}

@@ -1,0 +1,145 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content_data %}
+{% csrf_token %}
+                   
+        <div class="main">
+            <div class="main-inner">	
+                <div class="container">
+                <div class="row">
+               
+                </div>
+            </div>	
+                <div class="container">
+    
+                </form>
+            </div><!-- /widget-content -->
+        </div><!-- /widget -->
+        
+        <script>
+        
+        $(document).ready(function(){
+          $( "#autoCustomerField" ).autocomplete({
+                source: autoCustomerList,
+                change: function(event, ui) {
+                    if (ui.item == null || ui.item == undefined) {
+                    }
+                    else{
+                        if (ui.item) {
+                            $( "#autoCustomerField" ).val( ui.item.label );
+                            $( event.target ).attr("data-oldval", ui.item.label );
+                            $( "#hidden-companyname" ).val( ui.item.value);
+                        
+                        }
+                    }
+                },
+                select: function( event, ui ) {
+                    $( "#autoCustomerField" ).val( ui.item.label );
+                    $( event.target ).attr("data-oldval", ui.item.label );
+                    $( "#hidden-companyname" ).val( ui.item.value);
+                    return false;
+                }, minLength:0
+            }).focus(function(){            
+                    $(this).autocomplete("search");
+            });
+        });
+                
+        </script> 
+        
+        <div class="row" style="margin-top:-20px;">
+                    <div class="col-md-12">
+                        <center>
+        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- gst list 1 small -->
+        <ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 0px;" data-ad-client="ca-pub-7485845865785659" data-ad-slot="5628754217" data-adsbygoogle-status="done" data-overlap-observer-io="false"><ins id="aswift_1_expand" style="display: inline-table; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 728px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 728px; background-color: transparent; overflow: hidden; transition: opacity 1s cubic-bezier(0.4, 0, 1, 1) 0s, width 0.2s cubic-bezier(0.4, 0, 1, 1) 0.3s, height 0.5s cubic-bezier(0.4, 0, 1, 1) 0s; opacity: 0;"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:728px;height:90px;"></iframe></ins></ins></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+                        </center>
+                    </div>
+                </div>
+        <div >
+            <div class="span12">
+               
+                                <div class="widget widget-table action-table">
+                                  
+              <a href="{% url 'AddProduct' %}" class="btn btn-primary pull-right">
+                Add New medicines</a> &nbsp; 
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">Medicines List</h4>
+                           
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th style="display: table-cell;">
+                                            <center>Id</center>
+                                        </th>
+                                        <th style="display: table-cell;">
+                                            <a >Medicine Name</a>
+                                        </th>
+                                        <th data-breakpoints="md" style="display: table-cell;">
+                                            <a >Medicine quantity</a>
+                                        </th>
+                                       
+                                        <th data-breakpoints="sm" style="display: table-cell;">
+                                            <center>Action</center>
+                                        </th>
+                                        <th data-breakpoints="sm" class="footable-last-visible" style="display: table-cell;">
+                                            <center>Action</center>
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                        
+                                        {% for i in data %}
+                                        <tr>   
+                                        <td class="footable-first-visible" style="display: table-cell;"><center><h4>{{ forloop.counter }}</h4></center></td>
+                                        <td style="display: table-cell;">{{ i.productname }}</td>
+                                        </td><td style="display: table-cell;">{{ i.productquantity }}</td>
+                                            
+                                            <td class="td-actions" style="display: table-cell;">
+                                                
+                                                {% if i.status %}
+                                                    -
+                                                {% else %}
+                                                <center><a href="/editproduct/{{ i.id }}" class="btn">
+                                                    Edit
+                                                </a>
+                                                {% endif %}
+                                                    
+                                                
+                                            </center>  
+                                            </td>
+    
+                                            <td class="td-actions footable-last-visible" style="display: table-cell;">
+                                                
+                                                {% if i.status %}
+                                                    -
+                                                {% else %}
+                                                    <a href="/deleteproduct/{{ i.id }}" class="btn btn-danger" value="Delete" name="btndelete">
+                                                    Delete</button>
+                                                {% endif %}
+                                                    
+                                                </td>
+                                        </tr>
+                                        {% endfor %}
+    
+                        
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+   
+                
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock content_data %}

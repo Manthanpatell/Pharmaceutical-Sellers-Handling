@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title> Pharmacist Stock Organiation </title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/base/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+  </head>
+  <body>
+    
+		<!-- partial:partials/_horizontal-navbar.html -->
+    <div class="horizontal-menu">
+      <nav class="navbar top-navbar col-lg-12 col-12 p-0">
+        <div class="container-fluid">
+          <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
+            <ul class="navbar-nav navbar-nav-left">
+            </ul>
+            <div >
+              <b><h2 style="color: black;">Pharmacist Panel</h2></b> 
+            </div>
+            <ul class="navbar-nav navbar-nav-right">
+          
+                <li class="nav-item nav-profile dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="profileDropdown">
+                    <span class="nav-profile-name">{{ shop.PersonName }}</span>
+          
+                    <img src="{% static 'images/faces/face28.png' %}" alt="profile"/>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                      <a  href="{% url 'profile' %}" class="dropdown-item">
+                        <i class="mdi mdi-settings text-primary"></i>
+                        Profile
+                      </a>
+                      <a href="{% url 'LogoutStore' %}" class="dropdown-item">
+                        <i class="mdi mdi-logout text-primary"></i>
+                        Logout
+                      </a>
+                  </div>
+                </li>
+               
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
+              <span class="mdi mdi-menu"></span>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <nav class="bottom-navbar">
+        <div class="container">
+            <ul class="nav page-navigation">
+              <li class="nav-item">
+                  <a href="{% url 'Dashboard' %}" class="nav-link">  
+                    <i class="mdi mdi-finance menu-icon"></i>
+ 
+                    <span class="menu-title">Dashboard</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="{% url 'ProductListView' %}" class="nav-link">
+                   
+                    <i class="mdi mdi-finance menu-icon"></i>
+                    <span class="menu-title">Medicine Details</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+                    {% block content_data %}
+                    {% endblock content_data%}
+                </div>			
+			</div>
+		</div>
+
+    </div>
+    <script src="{% static 'vendors/base/vendor.bundle.base.js' %}"></script>
+    <script src="{% static 'vendors/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'vendors/progressbar.js/progressbar.min.js' %}"></script>
+		<script src="{% static 'vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js' %}"></script>
+		<script src="{% static 'vendors/justgage/raphael-2.1.4.min.js' %}"></script>
+		<script src="{% static 'vendors/justgage/justgage.js' %}"></script>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+  </body>
+</html>
